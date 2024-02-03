@@ -1,0 +1,73 @@
+<!-- // function: ktra email và ktra password(ktra về cấu trúc như @)
+// + tạo 1 trang html
+// + nút submit là gọi 2 hàm trên
+// + 2 thẻ input và mỗi thẻ dùng mỗi hàm
+// + var use = {username, pass}
+// -> ktra xem có đúng vs mảng đã khai báo hay ko
+
+// + và hiện ra 2 thẻ nếu thành công và thất bại
+
+// - bài 5 ktra regex
+// - bài 6 đổi email, pass -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home work</title>
+</head>
+<body>
+ Email:   <input type="text" id="email" name="email" oninput="Email()" >
+ <span id="Loi " style="color: blue;"></span>
+ Mật khẩu: <input type="text" id="matkhau" name="password" oninput="Matkhau()">
+<span id="matkhauLoi" style="color: blue;" ></span>
+<input type="submit" value="submit" onclick="dangnhap()">
+
+<script>
+           function Email() {
+            const emailvao = document.getElementById('email').value;
+            const emailLoi = document.getElementById('Loi');
+
+            if (!EmailFormat(emailvao)) {
+                emailLoi.textContent = 'Vui lòng nhập một địa chỉ email hợp lệ.';
+            } else {
+                emailLoi.textContent = '';
+            }
+        }
+
+        function Matkhau() {
+            const matkhauVao = document.getElementById('matkhau').value;
+            const matkhauLoi = document.getElementById('matkhauLoi');
+
+            if (!PasswordLength(matkhauVao)) {
+               matkhauLoi.textContent = 'Vui lòng nhập một mật khẩu có ít nhất 6 ký tự.';
+            } else {
+               matkhauLoi.textContent = '';
+            }
+        }
+
+        function EmailFormat(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function PasswordLength(matkhau) {
+            return matkhau.length >= 6;
+        }
+
+        function validateForm() {
+            const emailvao = document.getElementById('email').value;
+            const matkhauVao = document.getElementById('matkhau').value;
+
+            if (!EmailFormat(emailvao) || !PasswordLength(matkhauVao)) {
+                document.getElementById("demo").innerHTML = "Vui lòng kiểm tra lại thông tin đăng nhập";
+                return false;
+            }
+            document.getElementById("demo").innerHTML = "Đăng nhập thành công!";
+            return true;
+        }
+    </script>
+
+</body>
+
+</html>
