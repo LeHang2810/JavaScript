@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name</title>
+</head>
+<body>
+    <input type="text" name="eigable" value="Hallo1" id="e1">
+    <input type="text" name="eigable" value="Hallo2" id="e2">
+    <input type="text" name="eigable" value="Hallo3" id="e3">
+
+    <script type="text/javascript">
+        var inputs = document.getElementsByName("eingabe");
+        for(var i = 0; i < inputs.length; i++)
+        inputs[i].value = "Olla" + i;
+
+        document.getElementById('e1').value = " Toll!";
+        document.getElementById('e1').style.color = " red";
+    </script>
+</body>
+</html>

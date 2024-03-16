@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Document</title>
+    <style>
+        .style {
+            margin: 0 auto;
+            text-align: center;
+            width: 60%;
+        }
+
+        .style1 {
+            margin: 0 auto;
+            text-align: center;
+            width: 60%;
+        }
+
+        .style input {
+            margin: 2px;
+        }
+
+        .style button {
+            margin: 2px;
+        }
+
+        .style label {
+            margin: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="myDiv">
+        <div class="style1">
+            <label id="label">SP_1</label>
+            <input type="text">
+            <input type="text">
+            <input type="text">
+            <button type="button" id="button" onclick="add();"><i class="fa-solid fa-plus"></i></button>
+            <button type="button" id="button1" onclick="removeItem();"><i class="fa-solid fa-trash"></i></button>
+        </div>
+    </div>
+    <script>
+        let idList = []; // Danh sách id
+        let itemCount = 1; // Tạo id mới
+        function add() {
+            itemCount++;
+            const itemId = "SP_" + itemCount; // Tạo id mới
+            const divs = document.createElement("div");
+            divs.id = itemId;
+
+            const label = document.createElement("label");
+            label.innerText = itemId;
+            divs.appendChild(label);
+
+            const input1 = document.createElement("input");
+            divs.appendChild(input1);
+
+            const input2 = document.createElement("input");
+            divs.appendChild(input2);
+
+            const input3 = document.createElement("input");
+            divs.appendChild(input3);
+
+            const button = document.createElement("button");
+            button.type = "button";
+            button.addEventListener("click", add);
+            divs.appendChild(button);
+
+            const icon = document.createElement("i");
+            icon.classList.add("fa-solid", "fa-plus");
+            button.appendChild(icon);
+
+            const button1 = document.createElement("button");
+            button1.type = "button";
+            button1.addEventListener("click", removeItem);
+            divs.appendChild(button1);
+
+            const icon1 = document.createElement("i");
+            icon1.classList.add("fa-solid", "fa-trash");
+            button1.appendChild(icon1);
+
+            const listItem = document.createElement("div");
+            listItem.className = "style";
+            listItem.appendChild(divs);
+
+            document.getElementById("myDiv").appendChild(listItem);
+
+            // Thêm id mới vào danh sách
+            idList.push(itemId);
+        }
+
+        function removeItem() {
+            const parentDiv = this.parentElement;
+            const listItem = parentDiv.parentElement;
+
+            const divId = parentDiv.id;
+            const idIndex = idList.indexOf(divId);
+
+            if (idIndex !== -1) {
+                // Xóa id khỏi danh sách
+                idList.splice(idIndex, 1);
+            }
+
+            // Xóa phần tử
+            listItem.removeChild(parentDiv);
+        }
+
+
+    </script>
+</body>
+
+</html>
