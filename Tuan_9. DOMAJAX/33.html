@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title id="title">DOM Example</title>
+<script>
+    function evaluateForm(){
+        var input = document.getElementById('info');
+        var result = document.getElementById('result-form');
+        if(input.value==42){
+            result.innerHTML = 'Correct Answer';
+        }else{
+            result.innerHTML = 'Wrong Answer';
+        }
+    }
+    function evaluateClick(){
+        evaluateForm();
+        var result = document.getElementById('resultform');
+        result.innerHTML = 'You submitted the:'+ result.innerHTML;
+
+    }function hint(){
+        var input = document.getElementById('info');
+        input.value = 'Guess what the magic number id...';
+    }
+</script>
+</head>
+<body>
+    <div id="input-form">
+        <label for="info">Enter information here:</label><input name = "info"id="info" type="text" onkeyup = "evaluateForm();"/>
+        <button onclick="evaluateClick();">Submit</button>
+        <button onclick="hint();">Hint</button>
+    </div>
+    <div id="result-form"></div>
+</body>
+</html>

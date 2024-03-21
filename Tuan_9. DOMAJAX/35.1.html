@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="changeColorBtn" value="Change background-color"/>
+    
+    <script>
+        // Mảng chứa danh sách các màu bạn muốn sử dụng
+        var colors = ["lavender", "lightblue", "lightgreen", "lightcoral", "lightsalmon"];
+        
+        // Biến để lưu chỉ số của màu hiện tại trong mảng colors
+        var currentColorIndex = 0;
+        
+        // Lấy tham chiếu của nút
+        var button = document.getElementById("changeColorBtn");
+        
+        // Thiết lập sự kiện click cho nút
+        button.addEventListener("click", function() {
+            // Thay đổi màu nền của body thành màu tiếp theo trong mảng
+            document.body.style.backgroundColor = colors[currentColorIndex];
+            
+            // Tăng chỉ số màu, quay lại màu đầu nếu đã đạt màu cuối cùng trong mảng
+            currentColorIndex++;
+            if (currentColorIndex >= colors.length) {
+                currentColorIndex = 0;
+            }
+        });
+    </script>
+</body>
+</html>

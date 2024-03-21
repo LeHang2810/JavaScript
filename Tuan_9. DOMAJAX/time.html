@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Timer</title>
+<style>
+    #timer {
+        font-size: 24px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+    <div id="timer">10</div>
+    <script>
+        // Lấy tham chiếu của phần tử đồng hồ
+        var timerDisplay = document.getElementById('timer');
+
+        // Đặt thời gian ban đầu
+        var timeLeft = 10;
+
+        // Hàm đếm ngược
+        function countdown() {
+            if (timeLeft == 0) {
+                timerDisplay.innerHTML = "Time's up!";
+            } else {
+                timerDisplay.innerHTML = timeLeft;
+                timeLeft--;
+                setTimeout(countdown, 1000); // Gọi lại hàm sau mỗi giây
+            }
+        }
+
+        // Bắt đầu đếm ngược khi trang được tải
+        countdown();
+    </script>
+</body>
+</html>

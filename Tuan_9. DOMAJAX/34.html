@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamincally</title>
+    <style type="text/css">
+        .dynamicDiv{ width: 200px; height: 100px; border: solid1px #c0c0c0;background-color: aqua; font-size: 11px; font-family: 'Courier New', Courier, monospace;}
+    </style>
+    <script type="text/javascript" language="javascript">
+        function createDiv(){
+            var divTag = document.createElement("div");
+            divTag.id = 'div1';
+            divTag.setAttribute('align','center');
+            divTag.style.margin='Ppx auto';
+            divTag.className='symamicDiv';
+            divTag.innerHTML ='this HTML Div tag created JavaScript DOM dymamically';
+            document.body.appendChild(divTag);
+        }
+    </script>
+</head>
+<body>
+    <p style="text-align: center" >
+        <b>Click this button to create div element dynamically</b>
+        <input type="button" id="btn1" value="create div" onclick="createDiv();"/>
+    </p>
+    
+</body>
+</html>
