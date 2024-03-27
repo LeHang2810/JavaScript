@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var currentIndex = 0; // Biến để theo dõi chỉ mục của sản phẩm hiện tại
+            
+            $('#driver').click(function(){
+                $.getJSON("https://dummyjson.com/products", function(response){
+                    if (currentIndex < response.products.length) { // Kiểm tra xem còn sản phẩm nào chưa được hiển thị
+                        var product = response.products[currentIndex];
+                        var productHtml = '<div>';
+                        productHtml += '<h2>' + product.title + '</h2>';
+                        productHtml += '<p>Description: ' + product.description + '</p>';
+                        productHtml += '<p>Price: $' + product.price + '</p>';
+                        productHtml += '<p>Rating: ' + product.rating + '</p>';
+                        productHtml += '<img src="' + product.thumbnail + '" alt="' + product.title + '">';
+                        productHtml += '</div>';
+                        $('#product-list').html(productHtml);
+                        
+                        currentIndex++; // Tăng chỉ mục để hiển thị sản phẩm tiếp theo
+                    } else {
+                        $('#product-list').html('No more products.'); // Hiển thị thông báo nếu không còn sản phẩm nào
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Product List</h1>
+    <p>Click on the button to load the product list:</p>
+    <div id="product-list"></div>
+    <input type="button" id="driver" value="Load Next Product">
+</body>
+</html>
