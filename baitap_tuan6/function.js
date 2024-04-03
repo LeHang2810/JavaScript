@@ -6,7 +6,7 @@ function plusAll(){
     }
     return res;
 }
-console.log(plusAll(1) + "<br/>");
+console.log(plusAll(1,2) + "<br/>");
 console.log(plusAll(2,3,5) + "<br/>");
 
 function func1(a,b,c){
